@@ -1,0 +1,155 @@
+.tableplus-managed {
+  box-sizing: border-box;
+  max-width: none !important;
+}
+
+.tableplus-managed th,
+.tableplus-managed td {
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+}
+
+.tableplus-managed,
+.tableplus-managed th,
+.tableplus-managed td,
+.tableplus-wrapper {
+  transition: none !important;
+  transition-duration: 0s !important;
+}
+
+.tableplus-wrapper {
+  flex: none !important;
+}
+
+.tableplus-widget {
+  display: block !important;
+  overflow-x: auto !important;
+}
+
+.tableplus-handle {
+  --tableplus-accent: #4f9cff;
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 10000;
+  display: block;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 70ms ease;
+  touch-action: none;
+}
+
+.tableplus-handle.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.tableplus-handle::before {
+  box-sizing: border-box;
+  position: absolute;
+  content: "";
+  background: var(--tableplus-accent);
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--tableplus-accent) 22%, transparent);
+}
+
+.tableplus-handle::after {
+  box-sizing: border-box;
+  position: absolute;
+  content: "";
+  background-color: var(--background-primary);
+  border: 2px solid var(--tableplus-accent);
+  border-radius: 6px;
+  box-shadow: var(--shadow-s);
+}
+
+.tableplus-handle-column {
+  width: 12px;
+  transform: translateX(-50%);
+  cursor: col-resize;
+}
+
+.tableplus-handle-column::before {
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+}
+
+.tableplus-handle-column::after {
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 24px;
+  transform: translate(-50%, -50%);
+}
+
+.tableplus-handle-row {
+  height: 12px;
+  transform: translateY(-50%);
+  cursor: row-resize;
+}
+
+.tableplus-handle-row::before {
+  top: 50%;
+  right: 0;
+  left: 0;
+  height: 2px;
+  transform: translateY(-50%);
+}
+
+.tableplus-handle-row::after {
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 10px;
+  transform: translate(-50%, -50%);
+}
+
+.tableplus-handle:hover {
+  filter: brightness(1.08);
+}
+
+.tableplus-handle:hover > * {
+  pointer-events: none;
+}
+
+.tableplus-handle-column:hover::before,
+.tableplus-handle-row:hover::before {
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--tableplus-accent) 18%, transparent);
+}
+
+body[data-tableplus-cursor="column"],
+body[data-tableplus-cursor="column"] * {
+  cursor: col-resize !important;
+}
+
+body[data-tableplus-cursor="row"],
+body[data-tableplus-cursor="row"] * {
+  cursor: row-resize !important;
+}
+
+body[data-tableplus-cursor="both"],
+body[data-tableplus-cursor="both"] * {
+  cursor: nwse-resize !important;
+}
+
+body.tableplus-is-resizing,
+body.tableplus-is-resizing * {
+  user-select: none !important;
+}
+
+/* The native live-preview table widget already scrolls horizontally. This
+   fallback protects reading-view tables when every column has reached the
+   configured minimum and the table cannot fit the current pane. */
+.markdown-reading-view .markdown-preview-sizer:has(.tableplus-managed),
+.markdown-preview-view .markdown-preview-sizer:has(.tableplus-managed) {
+  overflow-x: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tableplus-handle {
+    transition: none;
+  }
+}

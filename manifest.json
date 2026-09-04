@@ -1,0 +1,9 @@
+{
+  "id": "obsidian-tableplus",
+  "name": "TablePlus",
+  "version": "0.1.8",
+  "minAppVersion": "1.5.0",
+  "description": "Resize Markdown table columns and rows by dragging, while preserving saved dimensions.",
+  "author": "Bell Yang",
+  "isDesktopOnly": true
+}
